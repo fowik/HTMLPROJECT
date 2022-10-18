@@ -8,10 +8,14 @@ NAVBAR
 --*/
 .nav-bar {
     color: #ffffff;
-    background-color: #4d4d4d;
+    background-color: #4d4d4dd7;
     box-sizing: border-box;
     height: 86px;
     width: auto;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .div-nav-bar {
@@ -54,7 +58,7 @@ li {
 .nav-ul-right-center{
     float: right;
     height: 50%;
-    margin-top: 0.625em;
+    margin-top: 1em;
 }
 /*--
 NAVBAR
@@ -81,8 +85,10 @@ SECTION ONE
     position: relative;
     text-transform: uppercase;
     font-size: 20px;
+    margin-top: 12.5%;
 
-    animation-name: h4-appearance;
+
+    animation-name: h4-appearnce;
     animation-duration: 2s;
 }
 
@@ -99,8 +105,9 @@ SECTION ONE
 .h2-div-section-one {
     font-size: 72px;
     margin: 0;
+    z-index: 50;
 
-    animation-name: h2-appearance;
+    animation-name: h2-appearanc;
     animation-duration: 2s;
 }
 
@@ -115,13 +122,12 @@ SECTION ONE
 }
 
 .par-animation {
-    animation-name: p-appearance;
+    animation-name: p-appearane;
     animation-duration: 2s;
 }
 
 @-webkit-keyframes p-appearance {
     0% {
-        margin-top: 300px;
         opacity: 0; 
     }
     100% {
@@ -131,6 +137,10 @@ SECTION ONE
 
 .p-div-section-one {
     margin-bottom: 5em;
+}
+
+.div-flex {
+    position: static;
 }
 
 .img-scale {
@@ -166,7 +176,7 @@ SECTION ONE
     --*/
 
 .div-portfolio {
-    margin-top: -585px;
+    margin-top: -51.25%;
     padding: 0;
     float: right;
     width: 640px;
