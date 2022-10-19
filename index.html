@@ -1,78 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel=”import” href="Nav-Bar.html">
     <title>Главная</title>
 </head>
 <body>
+  <div class="wrapper">
+    <include src="./views/Nav-Bar.html"></include>
+    
+    <div class="main"> 
+        <section class="section-one">
+          <div class="section-div-center">
+            <h4 class="h4-div-section-one">Немного обо мне</h4>
+            <h2 class="h2-div-section-one">Кто я такой?</h2>
+            <p class="par-animation">Привет! Меня зовут Римша Илья. Я учусь на третьем курсе профессии программиста в РВТ.</p>
+          </div>
 
-    <header class="nav-bar">
-      <div class="div-nav-bar">
-        <a class="img-nav-bar" href="index.html"><img src="images/default-logo.png" alt="Главная"></a>
-        <nav class="nav-ul-right-center">
-          <ul>
-            <li class=""><a href="index.html" style="color: #478ac9">Главная</a></li>
-            <li class=""><a href="About-us.html">О нас</a></li>
-            <li class=""><a href="Contacts.html">Контакты</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-
-    <section class="section-one">
-      <div class="section-div-center">
-        <h4 class="h4-div-section-one">Немного обо мне</h4>
-        <h2 class="h2-div-section-one">Кто я такой?</h2>
-        <p class="par-animation">Привет! Меня зовут Римша Илья. Я учусь на третьем курсе профессии программиста в РВТ.</p>
-      </div>
-
-      <div class="div-flex">
-        <div>
-            <div class="img-scale-animation">
-              <img class="img-scale" src="images/image.png" alt="Me">
+          <div class="div-flex">
+            <div>
+                <div class="img-scale-animation">
+                  <img class="img-scale" src="images/image.png" alt="Me">
+                </div>
+                <div class="div-portfolio">
+                  <div class="a-div-portfolio">
+                      <a>Я очень рад видеть Вас здесь!</a>
+                  </div>
+                  <div class="div-center">
+                    <a class="a-button" target="_blank" href="https://github.com/fowik">Смотреть портфолио</a>
+                  </div>
+                  <div class="div-links">
+                    <a target="_blank" href="https://www.facebook.com/profile.php?id=100036972453921" title="facebook"><img src="images/fb.png"  width="35" height="35"></a>
+                    <a target="_blank" href="https://twitter.com/fow1ki" title="twitter"><img src="images/twitter-icon-18-256.png" width="35" height="35"></a>
+                    <a target="_blank" href="https://www.instagram.com/fow1k/" title="instagram"><img src="images/instagram-icon-white-png-1.png" width="35" height="35"></a>
+                  </div>
+                </div>
             </div>
-            <div class="div-portfolio">
-              <div class="a-div-portfolio">
-                  <a>Я очень рад видеть Вас здесь!</a>
+          </div>
+        </section>
+
+        <section class="section-two">
+          <div class="container">
+            <img class="section-two-div-img-scale" src="images/e-background.png" alt="">
+            <div class="centered">
+              <div class="h2-text">
+                <h2>Мои приключения</h2>
               </div>
-              <div class="div-center">
-                <a class="a-button" target="_blank" href="https://github.com/fowik">Смотреть портфолио</a>
+              <div class="p-text">
+                <p>Нажав кнопочку вас отправит на сайт, где вы сможете посмотреть видео с моим участием.</p> 
               </div>
-              <div class="div-links">
-                <a target="_blank" href="https://www.facebook.com/profile.php?id=100036972453921" title="facebook"><img src="images/fb.png"  width="35" height="35"></a>
-                <a target="_blank" href="https://twitter.com/fow1ki" title="twitter"><img src="images/twitter-icon-18-256.png" width="35" height="35"></a>
-                <a target="_blank" href="https://www.instagram.com/fow1k/" title="instagram"><img src="images/instagram-icon-white-png-1.png" width="35" height="35"></a>
+              <div class="a-div">
+                <a class="a-button-two">Нажми меня</a>
               </div>
             </div>
-        </div>
+          </div>
+        </section>
       </div>
-    </section>
 
-    <section class="section-two">
-      <div class="container">
-        <img class="section-two-div-img-scale" src="images/e-background.png" alt="">
-        <div class="centered">
-          <div class="h2-text">
-            <h2>Мои приключения</h2>
-          </div>
-          <div class="p-text">
-            <p>Нажав кнопочку вас отправит на сайт, где вы сможете посмотреть видео с моим участием.</p> 
-          </div>
-          <div class="a-div">
-            <a class="a-button-two">Нажми меня</a>
-          </div>
-        </div>
-      </div>
-    </section>
+      <include src="./views/Footer.html"></include>
+  </div>
 
-    <footer class="footer">
-        <div class="div-footer">
-          <p>Привет! Вас приветсвует футер!</p>
-        </div>
-    </footer>
+<script src="jquery.js"></script>
 </body>
 </html>
