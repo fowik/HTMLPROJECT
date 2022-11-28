@@ -13,7 +13,7 @@
 </head>
 <body>
   <div class="wrapper">
-    <include src="./views/Nav-Bar.html"></include>
+    <?php include 'views/Nav-Bar.html'?>
     
     <div class="main"> 
         <section class="section-one">
@@ -63,7 +63,7 @@
         </section>
       </div>
 
-      <include src="./views/Footer.html"></include>
+      <?php include 'views/Footer.html'?>
 
   </div>
 

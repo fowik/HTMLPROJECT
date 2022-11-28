@@ -12,13 +12,13 @@
 </head>
 <body>
     <div class="wrapper">
-        <include src="./views/Nav-Bar.html"></include>
+        <?php include 'views/Nav-Bar.html'?>
 
         <div class="main">
             
         </div>
 
-        <include src="./views/Footer.html"></include>
+        <?php include 'views/Footer.html'?>
     </div>
 
 </body>
