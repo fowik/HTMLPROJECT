@@ -1,136 +1,103 @@
 <?php
+//Include required PHPMailer files
+require 'C:\laragon\bin\composer\vendor\phpmailer\phpmailer\src\Exception.php';
+require 'C:\laragon\bin\composer\vendor\phpmailer\phpmailer\src\PHPMailer.php';
+require 'C:\laragon\bin\composer\vendor\phpmailer\phpmailer\src\SMTP.php';
+
+//Define name spaces
 use PHPMailer\PHPMailer\PHPMailer;
-require_once __DIR__ . '/vendor/autoload.php';
-$errors = [];
-$errorMessage = '';
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-if (!empty($_POST)) {
-   $name = $_POST['name'];
-   $email = $_POST['email'];
-   $message = $_POST['message'];
+if($_POST) {
 
-   if (empty($name)) {
-       $errors[] = 'Name is empty';
-   }
+$visitor_name = "";
+$visitor_email = "";
+$email_title = "";
+$my_email = "ilarimsa937@gmail.com";
+$visitor_message = "";
 
-   if (empty($email)) {
-       $errors[] = 'Email is empty';
-   } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-       $errors[] = 'Email is invalid'
+//Create instance of PHPMailer
+$mail = new PHPMailer();
 
-   }
+//Set mailer to use smtp
+$mail->isSMTP();
 
+//Define smtp host
+$mail->Host = "smtp.gmail.com";
 
-   if (empty($message)) {
-       $errors[] = 'Message is empty';
-   }
+//Enable smtp authentication
+$mail->SMTPAuth = true;
 
-   if (!empty($errors)) {
-       $allErrors = join('<br/>', $errors);
-       $errorMessage = "<p style='color: red;'>{$allErrors}</p>";
-   } else {
-       $mail = new PHPMailer();
+//Set smtp encryption type (ssl/tls)
+$mail->SMTPSecure = "tls";
 
+//Port to connect smtp
+$mail->Port = "587";
 
-       // specify SMTP credentials
+//Set gmail username
+$mail->Username = "ilarimsa937@gmail.com";
 
+//Set gmail password
+$mail->Password = "rxexlgukwdrzgmkt";
 
-       $mail->isSMTP();
-       $mail->Host = 'smtp.mailtrap.io';
-       $mail->SMTPAuth = true;
-       $mail->Username = 'your_smtp_username';
-       $mail->Password = 'your_smtp_password';
-       $mail->SMTPSecure = 'tls';
-       $mail->Port = 2525;
-       $mail->setFrom($email, 'Mailtrap Website');
-       $mail->addAddress('example@example.com', 'Me');
-       $mail->Subject = 'New message from your website';
-
-       // Enable HTML if needed
-       $mail->isHTML(true);
-       $bodyParagraphs = ["Name: {$name}", "Email: {$email}", "Message:", nl2br($message)];
-       $body = join('<br />', $bodyParagraphs);
-       $mail->Body = $body;
-       echo $body;
-
-       if($mail->send()){
-           header('Location: thank-you.html'); // Redirect to 'thank you' page. Make sure you have it
-       } else {
-
-           $errorMessage = 'Oops, something went wrong. Mailer Error: ' . $mail->ErrorInfo;
-       }
-
-   }
-
+//Email title
+if(isset($_POST['email_title'])) {
+    $email_title = $_POST['email_title'];
 }
 
+//Email message
+if(isset($_POST['visitor_message'])) {
+    $visitor_message = htmlspecialchars($_POST['visitor_message']);
+}
+
+//Email subject
+if(isset($_POST['visitor_name'])) {
+    $visitor_name = $_POST['visitor_name'];
+}
+
+//Visitor email
+if(isset($_POST['visitor_email'])) {
+    $visitor_email = $_POST['visitor_email'];
+}
+
+$mail->Subject = "From ".$visitor_name;
+
+//Set sender email
+$mail->setFrom($visitor_email);
+
+//Enable HTML
+$mail->isHTML(true);
+
+// //Attachment
+// $mail->addAttachment('imgage/image.png');
+
+//Email body
+$mail->Body = 
+" 
+                <div>
+                    <label><b>Visitor Email:</b></label>&nbsp;<span>".$visitor_email."</span>
+                </div>
+                <div>
+                    <label><b>Reason For Contacting Me:</b></label>&nbsp;<span>".$email_title."</span>
+                </div>
+                <div>
+                    <label><b>Visitor Message:</b></label>
+                    <div>".$visitor_message."</div>
+                </div>
+";
+
+//Add recipient
+$mail->addAddress('ilarimsa937@gmail.com');
+
+//Finally send email
+if ( $mail->send() ) {
+    echo "Thank you for contacting us, $visitor_name. You will get a reply within 24 hours.";
+}else{
+    echo "Message could not be sent.";
+}
+
+//Closing smtp connection
+$mail->smtpClose();
+}
 ?>
-
-<html>
-<body>
- <form action="/swiftmailer_form.php" method="post" id="contact-form">
-   <h2>Contact us</h2>
-   <?php echo((!empty($errorMessage)) ? $errorMessage : '') ?>
-   <p>
-     <label>First Name:</label>
-     <input name="name" type="text"/>
-   </p>
-   <p>
-     <label>Email Address:</label>
-     <input style="cursor: pointer;" name="email" type="text"/>
-   </p>
-   <p>
-     <label>Message:</label>
-     <textarea name="message"></textarea>
-   </p>
-   <p>
-     <input type="submit" value="Send"/>
-   </p>
- </form>
-
-
- <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
-
- <script>
-
-     const constraints = {
-         name: {
-             presence: {allowEmpty: false}
-         },
-         email: {
-             presence: {allowEmpty: false},
-             email: true
-         },
-         message: {
-             presence: {allowEmpty: false}
-         }
-     };
-
-     const form = document.getElementById('contact-form');
-     form.addEventListener('submit', function (event) {
-         const formValues = {
-             name: form.elements.name.value
-             email: form.elements.email.value,
-             message: form.elements.message.value
-
-         };
-
-         const errors = validate(formValues, constraints);
-
-         if (errors) {
-           event.preventDefault();
-             const errorMessage = Object
-                 .values(errors)
-                 .map(function (fieldValues) {
-                     return fieldValues.join(', ')
-                 })
-                 .join("\n");
-             alert(errorMessage);
-
-         }
-
-     }, false);
-
- </script>
-</body>
-</html>

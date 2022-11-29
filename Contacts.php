@@ -17,7 +17,8 @@
         <?php include 'views/Nav-Bar.html'?>
 
         <div class="main">
-
+        
+        <form action="contact.php" method="POST" style="margin-top: 100px">
             <div class="background">
                 <div class="container">
                     <div class="screen">
@@ -32,8 +33,8 @@
                             <div class="screen-header-ellipsis"></div>
                             <div class="screen-header-ellipsis"></div>
                         </div>
-                        </div>
-                        <div class="screen-body">
+                    </div>
+                    <div class="screen-body">
                         <div class="screen-body-item left">
                             <div class="app-title">
                             <span>CONTACT</span>
@@ -42,36 +43,33 @@
                             <div class="app-contact">CONTACT INFO : +371 28646683</div>
                         </div>
                         <div class="screen-body-item">
-                            <div class="app-form">
+                        <div class="app-form">
                             <div class="app-form-group">
-                                <input class="app-form-control" placeholder="NAME" value="Ilya Rimsha">
+                                <input class="app-form-control" type="text" id="name" name="visitor_name" placeholder="ILYA RIMSHA">
                             </div>
                             <div class="app-form-group">
-                                <input class="app-form-control" placeholder="EMAIL">
+                                <input class="app-form-control" type="email" id="email" name="visitor_email" placeholder="E-MAIL">
                             </div>
                             <div class="app-form-group">
-                                <input class="app-form-control" placeholder="CONTACT NO">
+                                <input class="app-form-control" type="text" id="title" name="email_title" required placeholder="Title">
                             </div>
                             <div class="app-form-group message">
-                                <input class="app-form-control" placeholder="MESSAGE">
+                            <textarea id="message" name="visitor_message" placeholder="Say whatever you want." required></textarea>
                             </div>
                             <div class="app-form-group buttons">
                                 <button class="app-form-button">CANCEL</button>
                                 <button class="app-form-button">SEND</button>
-                            </div>
                             </div>
                         </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </form>
         </div>
-              
     </div>
 
     <?php include 'views/Footer.html'?>
-
-    </div>
 
 </body>
 </html>
