@@ -1,0 +1,11 @@
+{
+    "name": "01dpirimsa/htmlproject",
+    "type": "project",
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
